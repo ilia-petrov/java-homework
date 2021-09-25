@@ -1,18 +1,18 @@
 import java.util.Scanner;
 
 public class Problem4 {
-    static String[] months =  {"January",
-                        "February",
-                        "March",
-                        "April",
-                        "May",
-                        "June",
-                        "July",
-                        "August",
-                        "September",
-                        "October",
-                        "November",
-                        "December"};
+    static String[] months =  { "January",
+                                "February",
+                                "March",
+                                "April",
+                                "May",
+                                "June",
+                                "July",
+                                "August",
+                                "September",
+                                "October",
+                                "November",
+                                "December"};
 
     public static void printMonth(String month)
     {
@@ -32,21 +32,40 @@ public class Problem4 {
 
     public static int findDays(int month, int year)
     {
-        switch (month)
+        return switch (month) {
+            case 0, 2, 4, 6, 7, 9, 11 -> 31;
+            case 3, 5, 8, 10 -> 30;
+            default -> (year % 100 != 0 && year % 4 == 0) || year % 400 == 0 ? 29 : 28;
+        };
+    }
+
+    public static void printInitSpaces(int fday)
+    {
+        for(int i = 0; i < fday * 2; ++ i)
         {
-            case 0:
-            case 2:
-            case 4:
-            case 6:
-            case 7:
-            case 9:
-            case 11: return 31; break;
-            case 3:
-            case 5:
-            case 8:
-            case 10: return 30; break;
-            default: return (year % 100 != 0 && year % 4 == 0) || year % 400 == 0 ? 29 : 28;
+            System.out.print("\t");
         }
+    }
+
+    public static void printDates(int fday, int daysInMonth)
+    {
+        int currDay = 1;
+
+        for(int i = fday; i < 7; ++ i, ++ currDay)
+        {
+            System.out.print(currDay + "\t\t");
+        }
+        System.out.println();
+
+        while(currDay <= daysInMonth)
+        {
+            for(int i = 0; i < 7 && currDay <= daysInMonth; ++ i, ++ currDay)
+            {
+                System.out.print(currDay + "\t\t");
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 
     public static void main(String[] args)
@@ -63,8 +82,10 @@ public class Problem4 {
         for(int i = 0; i < 12; ++ i)
         {
             printMonth(months[i]);
-            int days = findDays(i, year);
-            print initSpaces(fday);
+            int daysInMonth = findDays(i, year);
+            printInitSpaces(fday);
+            printDates(fday, daysInMonth);
+            fday = (fday + daysInMonth) % 7;
         }
     }
 }
