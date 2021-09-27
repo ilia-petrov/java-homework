@@ -1,4 +1,4 @@
-public class Problem1 {
+public class Problem0611 {
     public static void main(String[] args)
     {
         for(char ch = '!'; ch <= '~';)
