@@ -1,18 +1,20 @@
 import java.util.Scanner;
 
 public class Problem3 {
-
-
     public static void main(String[] args)
     {
         Scanner sc = new Scanner(System.in);
+        int n;
+        double sum = 0;
 
-        Rectangular f = new Rectangular(new Point(sc.nextInt(), sc.nextInt()),
-                                        new Point(sc.nextInt(), sc.nextInt())),
-                    s = new Rectangular(new Point(sc.nextInt(), sc.nextInt()),
-                                        new Point(sc.nextInt(), sc.nextInt()));
+        System.out.println("Enter n:");
+        n = sc.nextInt();
+		while(n > 0)
+        {
+            sum += (1.0 / n);
+            n --;
+        }
 
-
-        System.out.println(f.isPointIn(s.u) && f.isPointIn(s.d));
-    }
+        System.out.println(sum);
+	}
 }
