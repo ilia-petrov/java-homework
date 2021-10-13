@@ -9,7 +9,7 @@ public class Problem3 {
 
         System.out.println("Enter n:");
         n = sc.nextInt();
-		while(n > 0)
+	while(n > 0)
         {
             sum += (1.0 / n);
             n --;
