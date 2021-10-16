@@ -24,7 +24,7 @@ public class Problem4Sudoku
 
         for(int i = 0; i < 9; ++ i)
         {
-            isSolution &= checkRoll(grid, i);
+            isSolution &= checkrow(grid, i);
         }
 
         for(int i = 0; i < 9; ++ i)
@@ -49,16 +49,16 @@ public class Problem4Sudoku
         }
     }
 
-    public static boolean checkRoll(int[][] grid, int roll)
+    public static boolean checkrow(int[][] grid, int row)
     {
         boolean[] used = new boolean[9];
         for(int i = 0; i < 9; ++ i)
         {
-            if(used[grid[roll][i]])
+            if(used[grid[row][i]])
             {
                 return false;
             }
-            used[grid[roll][i]] = true;
+            used[grid[row][i]] = true;
         }
 
         return true;
@@ -79,18 +79,18 @@ public class Problem4Sudoku
         return true;
     }
 
-    public static boolean checkBox(int[][] grid, int roll, int column)
+    public static boolean checkBox(int[][] grid, int row, int column)
     {
         boolean[] used = new boolean[9];
         for(int i = 0; i < 3; ++ i)
         {
             for(int j = 0; j < 3; ++ j)
             {
-                if(used[grid[roll + i][column + j]])
+                if(used[grid[row + i][column + j]])
                 {
                     return false;
                 }
-                used[grid[roll + i][column + j]] = true;
+                used[grid[row + i][column + j]] = true;
             }
         }
 
